@@ -13,3 +13,8 @@ hash method, in here I am using ```json.dumps(data)``` to return a string. then 
 are using ```Crypto.Hash import SHA256``` here to hash. From ```Crypto.Signature import PKCS1_v1_5``` to generate signature and
 also to validate signatures. In the ```sign()``` function we are generating a signature from the data hash. Whiting a ```sign()```
  function in <b>Transaction</b> class which will set the signature in <b>Transaction</b> class.
+ 
+3. In <b>Wallet</b> class create a static method name ```signatureValid``` with three parameters named ```data, signature, publicKeyString```
+<b>data</b> is the signature created on initially, <b>signature</b> to check if its true, <b>publicKeyString</b> is basically 
+the public key from the wallet RSA key pair(this was used to sign the data)[we need it in string format]. Create a method
+```publicKeyString``` which will return the public key extracted from ```self.keyPair``` as a string.
