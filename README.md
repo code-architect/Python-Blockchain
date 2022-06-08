@@ -18,3 +18,10 @@ also to validate signatures. In the ```sign()``` function we are generating a si
 <b>data</b> is the signature created on initially, <b>signature</b> to check if its true, <b>publicKeyString</b> is basically 
 the public key from the wallet RSA key pair(this was used to sign the data)[we need it in string format]. Create a method
 ```publicKeyString``` which will return the public key extracted from ```self.keyPair``` as a string.
+ 
+4. In <b>Transaction</b> class create a method ```payload```. We need a consistent representation, so for that we are
+creating this function. In here we create a deep copy, so we are using ```copy``` library. in <b>Wallet</b> class create a method name 
+```createTransaction```, what we have to provide is basically same which is in init method in <b>Transaction</b> apart from
+sending a public key. Use the ```transaction.payload()``` to create the signature then sign it with it and then return the 
+```transaction```. So now we can create sign transaction with one call. In the ```Main.py``` file test are we are testing if
+a fraud wallet public key will work or not.

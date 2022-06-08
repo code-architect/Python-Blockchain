@@ -1,5 +1,6 @@
 from Transaction import Transaction
 from Wallet import Wallet
+from pprint import pprint
 
 if __name__ == '__main__':
     sender = 'sender'
@@ -7,20 +8,36 @@ if __name__ == '__main__':
     amount = 1
     transType = 'TRANSFER'
 
-    transaction = Transaction(sender, receiver, amount, transType)
+    # transaction = Transaction(sender, receiver, amount, transType)
+    #
+    # wallet = Wallet()
+    # signature = wallet.sign(transaction.toJson())
+    # # print(signature)
+    #
+    # transaction.sign(signature)
+    # print(transaction.toJson())
+    # print("-----------------------------------------------------------------------------------------")
+    # print(signature)
+    # print("-----------------------------------------------------------------------------------------")
+    # print(wallet.publicKeyString())
+    # print("-----------------------------------------------------------------------------------------")
+    # signatureValid = Wallet.signatureValid(transaction.payload(), signature, wallet.publicKeyString())
+    # print(signatureValid)
+
+    # wallet = Wallet()
+    # transaction = wallet.createTransaction(receiver, amount, transType)
+    # pprint(transaction.toJson())
+    # print("-----------------------------------------------------------------------------------------")
+    # signatureValid = Wallet.signatureValid(transaction.payload(), transaction.signature, wallet.publicKeyString())
+    # print("-----------------------------------------------------------------------------------------")
+    # pprint(transaction.signature)
+    # print("-----------------------------------------------------------------------------------------")
+    # pprint(wallet.publicKeyString())
+    # print("-----------------------------------------------------------------------------------------")
+    # pprint(signatureValid)
 
     wallet = Wallet()
-    signature = wallet.sign(transaction.toJson())
-    # print(signature)
-
-    # transaction.sign(signature)
-    print(transaction.toJson())
-    print("-----------------------------------------------------------------------------------------")
-    print(signature)
-    print("-----------------------------------------------------------------------------------------")
-    print(wallet.publicKeyString())
-    print("-----------------------------------------------------------------------------------------")
-    signatureValid = Wallet.signatureValid(transaction.toJson(), signature, wallet.publicKeyString())
-
-    print(signatureValid)
-
+    fraudelentWallet = Wallet()
+    transaction = wallet.createTransaction(receiver, amount, transType)
+    signatureValid = Wallet.signatureValid(transaction.payload(), transaction.signature, fraudelentWallet.publicKeyString())
+    pprint(signatureValid)
