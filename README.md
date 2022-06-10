@@ -25,3 +25,11 @@ creating this function. In here we create a deep copy, so we are using ```copy``
 sending a public key. Use the ```transaction.payload()``` to create the signature then sign it with it and then return the 
 ```transaction```. So now we can create sign transaction with one call. In the ```Main.py``` file test are we are testing if
 a fraud wallet public key will work or not.
+
+5. Create a new file name ```Transaction Pool```. So here we want ot create some kind of list which which is the transaction pool
+which adds new transactions but make sure same transaction will not be added twice. Create a method ```addTransaction```
+which will add new transaction, but we have to make sure that the same transaction must not exists twice, so we will create
+another method ```transactionExists```. There are many ways to compare two transaction, we can use the uuid field
+```self.id = uuid.uuid1().hex``` in <b>Transaction</b>  class which we have declared previously. To do that we are writing
+a method in <b>Transaction</b> class named ```equals``` which will compare two ids of a transaction. Now we can call it
+in ```transactionExists``` to check and verify.
