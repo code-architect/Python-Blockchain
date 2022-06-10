@@ -33,3 +33,12 @@ another method ```transactionExists```. There are many ways to compare two trans
 ```self.id = uuid.uuid1().hex``` in <b>Transaction</b>  class which we have declared previously. To do that we are writing
 a method in <b>Transaction</b> class named ```equals``` which will compare two ids of a transaction. Now we can call it
 in ```transactionExists``` to check and verify.
+
+6. Create <b>Block</b> class, a block is a container which holds a bunch of transactions, which later on integrated in the
+chain of blocks. In the class we declare the class constructor, few inputs required ```transactions, lastHash, forger, blockCount```.
+First parameter is </b>transactions</b>, as we are going to build a chain of blocks we need some kind of reference to the
+latest block in the blockchain, to get the reference of this block we use the hash of this block </b>lastHast</b>,
+</b>forger</b> is just a node, later we will have a whole network of nodes. The nodes will try to be the one to who create a
+new block to get rewarded, if a node is entitled to create the new block then it's called <b>forger</b>. <b>blockCount</b> is
+nothing more then an incrementing number to keep the count of the blocks. In ```tojson()``` method of <b>Block</b> class
+are we getting the dictionary format of all the transaction and also serializing all the information.
